@@ -1,0 +1,26 @@
+.title {
+  font-weight: bold;
+  text-align: center;
+  margin: 35px;
+  font-size: 50pt;
+  color: white;
+}
+
+.flex-center {
+  flex-direction: column;
+}
+
+.button {
+  padding: 8px 16px;
+  font-weight: 500;
+  background-color: rgb(248, 233, 15);
+  border-radius: 5px;
+  margin: 15px 0px;
+  cursor: pointer;
+  color: black;
+}
+
+.button:hover {
+  background-color: rgb(255, 246, 123);
+  color: rgb(77, 77, 77);
+}
