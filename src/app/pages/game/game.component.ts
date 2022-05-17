@@ -49,7 +49,6 @@ export class GameComponent implements OnInit {
     this.mediaSubscription = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
         this.screenSize = result.mqAlias;
-        console.log(this.screenSize);
       }
     );
 
@@ -68,11 +67,10 @@ export class GameComponent implements OnInit {
       (res: { fixtures: Fixture[] }) => {
         this.fixtures = res.fixtures;
         this.currentFixture = getRandomFixture(this.fixtures);
-        console.log(this.currentFixture);
       },
       (error) => {
         this.loadingError = true;
-        console.log('get error', error);
+        console.log('Error getting data from backend', error);
       }
     );
   }

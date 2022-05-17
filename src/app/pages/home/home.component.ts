@@ -46,19 +46,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onPlayClick() {
-    console.log('play');
     const dialogRef = this.dialog.open(ModeComponent, {
       width: '719px',
       maxHeight: '800px',
     });
     dialogRef.afterClosed().subscribe((data: string) => {
-      console.log(data);
       if (data) this.router.navigate(['game', data]);
     });
   }
 
   onHowClick() {
-    console.log('play');
     const dialogRef = this.dialog.open(HowItWorksComponent, {
       width: '719px',
       maxHeight: '800px',
@@ -67,7 +64,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onAboutClick() {
-    console.log('play');
     const dialogRef = this.dialog.open(AboutComponent, {
       width: '719px',
       maxHeight: '800px',
