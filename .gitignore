@@ -10,6 +10,9 @@
 # dependencies
 /node_modules
 
+# custom file
+/src/app/helpers/dbFixing.ts
+
 # profiling files
 chrome-profiler-events*.json
 
