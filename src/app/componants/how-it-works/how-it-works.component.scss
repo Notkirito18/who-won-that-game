@@ -2,6 +2,7 @@
   font-size: 20pt;
   font-weight: bold;
   margin-bottom: 20px;
+  line-height: 1;
 }
 .text{
   font-size: 12pt;
@@ -17,4 +18,16 @@ img{
 }
 section{
   padding: 15px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    text-align: left;
+  }
+  img{
+    margin: 15px 0px;
+  }
+  section {
+    padding: 5px 0px;
+  }
 }

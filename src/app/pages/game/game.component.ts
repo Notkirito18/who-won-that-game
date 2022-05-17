@@ -179,7 +179,7 @@ export class GameComponent implements OnInit {
             data.awayGoals == this.currentFixture.score.away
           ) {
             this.score = this.score + 2;
-            this.snackBar.open('You got 2 extra points, keep it going ', '', {
+            this.snackBar.open('You got 2 extra points', '', {
               duration: 3000,
               panelClass: 'extra-points-snackbar',
             });
@@ -196,7 +196,7 @@ export class GameComponent implements OnInit {
             data.awayGoals == this.currentFixture.score.away
           ) {
             this.score = this.score + 2;
-            this.snackBar.open('You got 2 extra points, keep it going ', '', {
+            this.snackBar.open('You got 2 extra points', '', {
               duration: 3000,
               panelClass: 'extra-points-snackbar',
             });
@@ -221,7 +221,7 @@ export class GameComponent implements OnInit {
             data.awayGoals == this.currentFixture.score.away
           ) {
             this.score = this.score + 2;
-            this.snackBar.open('You got 2 extra points, keep it going ', '', {
+            this.snackBar.open('You got 2 extra points', '', {
               duration: 3000,
               panelClass: 'extra-points-snackbar',
             });

@@ -317,21 +317,28 @@
   .strikes {
     top: auto !important;
     bottom: 40px !important;
-    right: 0px !important;
+    right: 8px !important;
     .strike{
       margin: 0px 2px !important;
     }
   }
+    ::ng-deep snack-bar-container.strike-snackbar {
+      width: auto !important;
+    }
+
+    ::ng-deep snack-bar-container.extra-points-snackbar {
+      width: auto !important;
+    }
 }
 
 ::ng-deep snack-bar-container.strike-snackbar{
-  min-width: auto !important;
+  min-width: 0 !important;
   background-color: var(--my_red) ;
   color: white ;
 }
 
 ::ng-deep snack-bar-container.extra-points-snackbar{
-  min-width: auto !important;
+  min-width: 0 !important;
   background-color: var(--my_green);
   color: white;
 }

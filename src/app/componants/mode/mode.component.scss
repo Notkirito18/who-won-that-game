@@ -82,7 +82,7 @@ hr{
 }
 .card:hover{
   .overlay{
-        opacity: 0.65;
+    opacity: 0.65;
   }
   .card-text{
     transition: all ease 0.5s;
@@ -112,6 +112,20 @@ hr{
       }
     }
   }
+    .card:active {
+      .overlay {
+        opacity: 0.65;
+      }
+
+      .card-text {
+        transition: all ease 0.5s;
+        bottom: 20px;
+
+        .card-description {
+          visibility: visible;
+        }
+      }
+    }
 }
 @media only screen and (max-width: 609px){
   .cards-container{

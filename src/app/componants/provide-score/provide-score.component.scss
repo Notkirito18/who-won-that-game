@@ -2,6 +2,7 @@
   font-weight: bold;
   font-size: 26pt;
   text-align: center;
+  line-height: 1;
 }
 .teams{
   display: flex;
@@ -11,8 +12,8 @@
     .logo{
       padding: 40px;
       img{
-        width: 100px;
-        height: 100px;
+        max-width: 100px;
+        max-height: 100px;
       }
     }
     .goals{
@@ -59,3 +60,13 @@
   margin-top: 15px;
 }
 
+@media only screen and (max-width: 600px) {
+
+  .teams{
+    flex-direction: column;
+    .logo{
+      padding: 20px;
+    }
+  }
+
+}
