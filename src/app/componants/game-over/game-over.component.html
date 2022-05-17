@@ -1,0 +1,27 @@
+<div class="container center">
+  <div class="title">Game Over</div>
+  <div class="text">Your Score : {{ data.score }}</div>
+  <div class="buttons">
+    <button
+      mat-raised-button
+      class="new"
+      (click)="dialogRef.close({ mode: 'new' })"
+    >
+      New Game
+    </button>
+    <button
+      mat-raised-button
+      class="mode"
+      (click)="dialogRef.close({ mode: 'mode' })"
+    >
+      Change Mode
+    </button>
+    <button
+      mat-raised-button
+      class="home"
+      (click)="dialogRef.close({ mode: 'home' })"
+    >
+      Home
+    </button>
+  </div>
+</div>

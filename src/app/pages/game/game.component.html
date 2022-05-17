@@ -1,58 +1,70 @@
 <div class="wrapper">
   <!--* background  -->
-
   <div class="overlay"></div>
   <img
     class="bg"
-    src="../../../assets/champions-league-background.jpg"
+    [src]="
+      currentMode == 'World-Cup'
+        ? '../../../assets/world-cup.jpg'
+        : '../../../assets/champions-league-background.jpg'
+    "
     alt=""
   />
-  <!-- <div class="top-info">
-    <div class="mode">Mode : {{ gameMode }}</div>
-    <div class="score">Score : {{ score }}</div>
-  </div> -->
+  <!--* score / home / strikes-->
+  <span class="score">Score : {{ score }}</span>
+  <mat-icon class="home-icon" [routerLink]="['/home']">home</mat-icon>
+  <div class="strikes">
+    <mat-icon class="strike" [ngClass]="strikes > 0 ? 'active-strike' : ''"
+      >cancel</mat-icon
+    >
+    <mat-icon class="strike" [ngClass]="strikes > 1 ? 'active-strike' : ''"
+      >cancel</mat-icon
+    >
+    <mat-icon class="strike" [ngClass]="strikes > 2 ? 'active-strike' : ''"
+      >cancel</mat-icon
+    >
+  </div>
 
   <div *ngIf="currentFixture">
+    <!--*GAME INFO  -->
+
     <div class="game-info-container">
       <div class="game-info">
         <div>
-          season {{ currentFixture.season }} - {{ currentFixture.season + 1 }}
+          {{
+            currentFixture.league._id == "1"
+              ? "season " + currentFixture.season
+              : "season " +
+                currentFixture.season +
+                " - " +
+                (currentFixture.season + 1)
+          }}
         </div>
         <div>{{ currentFixture.league.round }}</div>
         <div>{{ currentFixture.league.leg }}</div>
       </div>
-      <div class="flex-center line-container">
+      <div class="flex-center line-container" *ngIf="screenSize != 'xs'">
         <div class="line tline"></div>
         <div class="vs-box flex-center"><span>VS</span></div>
         <div class="line bline"></div>
       </div>
     </div>
-    <div class="roww">
-      <div class="flex-center team-container home">
-        <!-- <div class="team-overlay">
-          <button
-            mat-raised-button
-            class="won-btn"
-            (click)="
-              nextFixture(
-                currentFixture.teams.home._id,
-                currentFixture.teams.away._id
-              )
-            "
-          >
-            {{ currentFixture.teams.home.name + " " }} Won
-          </button>
-          <button
-            mat-raised-button
-            class="draw-btn"
-            (click)="nextFixture('draw', currentFixture.teams.away._id)"
-          >
-            Draw
-          </button>
-          <button mat-raised-button class="score-btn" color="warn">
-            Provide Score
-          </button>
-        </div> -->
+    <div class="flex-center horiz-line-container" *ngIf="screenSize == 'xs'">
+      <div class="horiz-line"></div>
+      <div class="horiz-vs-box flex-center"><span>VS</span></div>
+      <div class="horiz-line"></div>
+    </div>
+    <div class="game-container">
+      <!--*LEFT SIDE  -->
+
+      <div
+        class="flex-center team-container"
+        (click)="showLButtons = !showLButtons"
+      >
+        <div
+          *ngIf="screenSize == 'xs' && showLButtons"
+          class="buttons-overlay"
+        ></div>
         <div class="center">
           <img
             #homeImage
@@ -61,36 +73,83 @@
             [alt]="currentFixture.teams.home.name"
           />
           <div class="team-name">{{ currentFixture.teams.home.name }}</div>
+          <div class="buttons" *ngIf="!answered && screenSize != 'xs'">
+            <button
+              mat-raised-button
+              class="won-btn"
+              (click)="
+                nextFixture(
+                  currentFixture.teams.home._id,
+                  currentFixture.teams.away._id
+                )
+              "
+            >
+              {{ currentFixture.teams.home.name }} Won
+            </button>
+            <button
+              mat-raised-button
+              class="draw-btn"
+              (click)="nextFixture('draw', currentFixture.teams.away._id)"
+            >
+              Draw
+            </button>
+            <button
+              (click)="onProvideScore()"
+              mat-raised-button
+              class="score-btn"
+              color="warn"
+            >
+              Provide Game Result
+            </button>
+          </div>
+          <div
+            class="buttons-small-screen"
+            *ngIf="screenSize == 'xs' && showLButtons"
+            [ngClass]="showLButtons ? 'animate-buttons' : ''"
+          >
+            <button
+              mat-raised-button
+              class="won-btn"
+              (click)="
+                nextFixture(
+                  currentFixture.teams.home._id,
+                  currentFixture.teams.away._id
+                )
+              "
+            >
+              {{ currentFixture.teams.home.name }} Won
+            </button>
+            <button
+              mat-raised-button
+              class="draw-btn"
+              (click)="nextFixture('draw', currentFixture.teams.away._id)"
+            >
+              Draw
+            </button>
+            <button
+              (click)="onProvideScore()"
+              mat-raised-button
+              class="score-btn"
+              color="warn"
+            >
+              Provide Game Result
+            </button>
+          </div>
         </div>
-        <ng-container *ngIf="answered">{{
-          currentFixture.score.home
-        }}</ng-container>
+        <div class="result" *ngIf="answered">
+          {{ currentFixture.score.home }}
+        </div>
       </div>
-      <div class="flex-center team-container away">
-        <div class="team-overlay">
-          <button
-            mat-raised-button
-            class="won-btn"
-            (click)="
-              nextFixture(
-                currentFixture.teams.away._id,
-                currentFixture.teams.away._id
-              )
-            "
-          >
-            {{ currentFixture.teams.away.name + " " }} Won
-          </button>
-          <button
-            mat-raised-button
-            class="draw-btn"
-            (click)="nextFixture('draw', currentFixture.teams.away._id)"
-          >
-            Draw
-          </button>
-          <button mat-raised-button class="score-btn" color="warn">
-            Provide Score
-          </button>
-        </div>
+
+      <!--*RIGHT SIDE  -->
+      <div
+        class="flex-center team-container"
+        (click)="showRButtons = !showRButtons"
+      >
+        <div
+          *ngIf="screenSize == 'xs' && showRButtons"
+          class="buttons-overlay"
+        ></div>
         <div class="center">
           <img
             class="logo-img"
@@ -98,12 +157,84 @@
             [alt]="currentFixture.teams.away.name"
           />
           <div class="team-name">{{ currentFixture.teams.away.name }}</div>
+          <div class="buttons" *ngIf="!answered && screenSize != 'xs'">
+            <button
+              mat-raised-button
+              class="won-btn"
+              (click)="
+                nextFixture(
+                  currentFixture.teams.away._id,
+                  currentFixture.teams.away._id
+                )
+              "
+            >
+              {{ currentFixture.teams.away.name }} Won
+            </button>
+            <button
+              mat-raised-button
+              class="draw-btn"
+              (click)="nextFixture('draw', currentFixture.teams.away._id)"
+            >
+              Draw
+            </button>
+            <button
+              (click)="onProvideScore()"
+              mat-raised-button
+              class="score-btn"
+              color="warn"
+            >
+              Provide Game Result
+            </button>
+          </div>
+          <div
+            class="buttons-small-screen"
+            *ngIf="screenSize == 'xs' && showRButtons"
+            [ngClass]="showRButtons ? 'animate-buttons' : ''"
+          >
+            <button
+              mat-raised-button
+              class="won-btn"
+              (click)="
+                nextFixture(
+                  currentFixture.teams.away._id,
+                  currentFixture.teams.away._id
+                )
+              "
+            >
+              {{ currentFixture.teams.away.name }} Won
+            </button>
+            <button
+              mat-raised-button
+              class="draw-btn"
+              (click)="nextFixture('draw', currentFixture.teams.away._id)"
+            >
+              Draw
+            </button>
+            <button
+              (click)="onProvideScore()"
+              mat-raised-button
+              class="score-btn"
+              color="warn"
+            >
+              Provide Game Result
+            </button>
+          </div>
         </div>
-        <ng-container *ngIf="answered">{{
-          currentFixture.score.away
-        }}</ng-container>
+        <div class="result" *ngIf="answered">
+          {{ currentFixture.score.away }}
+        </div>
       </div>
     </div>
   </div>
-  <div *ngIf="!currentFixture">Loading</div>
+  <!--* spinner  -->
+  <div *ngIf="!currentFixture && !loadingError">
+    <div class="spinner-container flex-center">
+      <mat-spinner color="warn"></mat-spinner>
+    </div>
+  </div>
+  <!--* Error handler  -->
+  <div class="error" *ngIf="loadingError">
+    <div class="text">There has been an error loading the game data</div>
+    <button mat-raised-button (click)="tryAgain()">Try again</button>
+  </div>
 </div>

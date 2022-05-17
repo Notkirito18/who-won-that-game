@@ -9,9 +9,11 @@ import { Fixture } from '../helpers/models';
 export class FixturesService {
   constructor(private http: HttpClient) {}
 
-  getFixturesFootballApi(season: number) {
+  getFixturesFootballApi(season: number, league: number) {
     return this.http.get(
-      'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=2&season=' +
+      'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=' +
+        league +
+        '&season=' +
         season.toString(),
       {
         headers: {
@@ -22,17 +24,20 @@ export class FixturesService {
     );
   }
 
-  // saveFixture(fixture: Fixture | Fixture[]) {
-  //   return this.http.post('http://localhost:5000/api/fixtures', fixture);
-  // }
+  saveFixture(fixture: Fixture) {
+    return this.http.post('http://localhost:5000/api/fixtures', fixture, {
+      headers: { key: environment.myApiKey },
+    });
+  }
 
-  getAllFixtures() {
-    return this.http.get<{ fixtures: Fixture[] }>(
-      'http://localhost:5000/api/fixtures',
-      {
-        headers: { key: environment.myApiKey },
-      }
-    );
+  getAllFixtures(league?: number) {
+    const url = league
+      ? 'http://localhost:5000/api/fixtures' + '?league._id=' + league
+      : 'http://localhost:5000/api/fixtures';
+
+    return this.http.get<{ fixtures: Fixture[] }>(url, {
+      headers: { key: environment.myApiKey },
+    });
   }
 
   updateFixture(fixtureId: string, updatedFixture: Fixture) {

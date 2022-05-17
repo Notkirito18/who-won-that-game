@@ -1,0 +1,187 @@
+<div class="container">
+  <!--*title  -->
+  <div class="title">PROVIDE GAME RESULT</div>
+  <!--* teams  -->
+  <div class="teams">
+    <div class="team">
+      <!--* logo home  -->
+      <div class="logo">
+        <img [src]="data.fixture.teams.home.logo" alt="home-team" />
+      </div>
+      <!--* goals icons home -->
+      <div class="goals">
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 0)"
+          [ngStyle]="{ opacity: opacityStyling('away', 0) }"
+          >sports_soccer
+          <div class="null-goals"></div
+        ></mat-icon>
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 1)"
+          [ngStyle]="{ opacity: opacityStyling('home', 1) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 2)"
+          [ngStyle]="{ opacity: opacityStyling('home', 2) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 3)"
+          [ngStyle]="{ opacity: opacityStyling('home', 3) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 4)"
+          [ngStyle]="{ opacity: opacityStyling('home', 4) }"
+          >sports_soccer</mat-icon
+        >
+      </div>
+      <div class="goals">
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 5)"
+          [ngStyle]="{ opacity: opacityStyling('home', 5) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 6)"
+          [ngStyle]="{ opacity: opacityStyling('home', 6) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 7)"
+          [ngStyle]="{ opacity: opacityStyling('home', 7) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 8)"
+          [ngStyle]="{ opacity: opacityStyling('home', 8) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('home', 9)"
+          [ngStyle]="{ opacity: opacityStyling('home', 9) }"
+          >sports_soccer</mat-icon
+        >
+      </div>
+      <!--*input home  -->
+      <div class="goals-input">
+        <input
+          type="number"
+          min="0"
+          [(ngModel)]="homeGoals"
+          (change)="selectWinner()"
+        />
+      </div>
+    </div>
+
+    <div class="team">
+      <!--* logo away  -->
+      <div class="logo">
+        <img [src]="data.fixture.teams.away.logo" alt="away-team" />
+      </div>
+      <!--* goals icons away  -->
+      <div class="goals">
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 0)"
+          [ngStyle]="{ opacity: opacityStyling('away', 0) }"
+          >sports_soccer
+          <div class="null-goals"></div
+        ></mat-icon>
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 1)"
+          [ngStyle]="{ opacity: opacityStyling('away', 1) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 2)"
+          [ngStyle]="{ opacity: opacityStyling('away', 2) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 3)"
+          [ngStyle]="{ opacity: opacityStyling('away', 3) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 4)"
+          [ngStyle]="{ opacity: opacityStyling('away', 4) }"
+          >sports_soccer</mat-icon
+        >
+      </div>
+      <div class="goals">
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 5)"
+          [ngStyle]="{ opacity: opacityStyling('away', 5) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 6)"
+          [ngStyle]="{ opacity: opacityStyling('away', 6) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 7)"
+          [ngStyle]="{ opacity: opacityStyling('away', 7) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 8)"
+          [ngStyle]="{ opacity: opacityStyling('away', 8) }"
+          >sports_soccer</mat-icon
+        >
+        <mat-icon
+          class="ball"
+          (click)="goalsSelect('away', 9)"
+          [ngStyle]="{ opacity: opacityStyling('away', 9) }"
+          >sports_soccer</mat-icon
+        >
+      </div>
+      <!--*input away  -->
+      <div class="goals-input">
+        <input
+          type="number"
+          min="0"
+          [(ngModel)]="awayGoals"
+          (change)="selectWinner()"
+        />
+      </div>
+    </div>
+  </div>
+  <!--* action button  -->
+  <div class="flex-center">
+    <button
+      mat-raised-button
+      class="submit-btn"
+      (click)="
+        dialogRef.close({
+          winner: winner,
+          homeGoals: homeGoals,
+          awayGoals: awayGoals
+        })
+      "
+      [disabled]="!validateInput()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

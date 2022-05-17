@@ -17,12 +17,19 @@ hr{
   flex-wrap: wrap;
   gap: 10px;
 }
+
+.cl{
+  background: url(../../../assets/champions-league.jpg) no-repeat;
+}
+.wc{
+  background: url(../../../assets/world-cup.jpg) no-repeat;
+}
+
 .card{
   position: relative;
   padding: 15px;
   height: 250px;
   width: 200px;
-  background: url(../../../assets/champions-league.jpg) no-repeat;
   background-size: cover;
   cursor: pointer;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
@@ -62,10 +69,11 @@ hr{
     bottom: -60px;
     left: 15px;
     padding-right: 15px;
+    color: white;
     .card-title{
       font-size: 15pt;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
     .card-description{
       visibility: hidden;
@@ -82,5 +90,31 @@ hr{
     .card-description {
       visibility: visible;
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .title{
+    font-size: 20pt;
+    line-height: 1;
+  }
+  .card{
+    height: 200px;
+    width: 150px;
+    .card-text{
+      .card-title{
+        font-size: 12pt;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .card-description{
+        font-size: 9pt;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 609px){
+  .cards-container{
+    justify-content: center;
   }
 }

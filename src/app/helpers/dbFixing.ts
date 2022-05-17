@@ -253,3 +253,62 @@
 //     console.log(error);
 //   }
 // );
+
+//* new code for saving to backend
+// this.fixtureService.getFixturesFootballApi(2010, 1).subscribe(
+//   (res: any) => {
+//     console.log(res);
+//     const allFixtures = res.response;
+//     let intervalIndex = 0;
+//     this.dbInterval = setInterval(() => {
+//       intervalIndex++;
+//       const fixtureToAdd = new Fixture(
+//         '',
+//         allFixtures[intervalIndex].fixture.referee,
+//         allFixtures[intervalIndex].fixture.date,
+//         new League(
+//           allFixtures[intervalIndex].league.id.toString(),
+//           allFixtures[intervalIndex].league.name,
+//           allFixtures[intervalIndex].league.round,
+//           '',
+//           allFixtures[intervalIndex].league.logo
+//         ),
+//         new Venue(
+//           allFixtures[intervalIndex].fixture.venue.name,
+//           allFixtures[intervalIndex].fixture.venue.city
+//         ),
+//         allFixtures[intervalIndex].league.season,
+//         new FixtureTeams(
+//           new Team(
+//             allFixtures[intervalIndex].teams.home.id.toString(),
+//             allFixtures[intervalIndex].teams.home.name,
+//             allFixtures[intervalIndex].teams.home.winner,
+//             allFixtures[intervalIndex].teams.home.logo
+//           ),
+//           new Team(
+//             allFixtures[intervalIndex].teams.away.id.toString(),
+//             allFixtures[intervalIndex].teams.away.name,
+//             allFixtures[intervalIndex].teams.away.winner,
+//             allFixtures[intervalIndex].teams.away.logo
+//           )
+//         ),
+//         {
+//           home: allFixtures[intervalIndex].score.fulltime.home,
+//           away: allFixtures[intervalIndex].score.fulltime.away,
+//         }
+//       );
+//       console.log('before saving', fixtureToAdd);
+//       this.fixtureService.saveFixture(fixtureToAdd).subscribe(
+//         (res) => {
+//           console.log('count' + intervalIndex, res);
+//         },
+//         (error) => {
+//           console.log('error from backend', error);
+//         }
+//       );
+//     }, 300);
+//   },
+//   (error) => {
+//     console.log('error from football api', error);
+//   }
+// );

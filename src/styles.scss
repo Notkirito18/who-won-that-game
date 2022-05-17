@@ -9,10 +9,11 @@
   --my_red: #f44336;
   --my_orange: #f5772e;
   --my_white: #ffffff;
+  --my_gray: #919191;
 }
 * {
   font-family: 'Poppins', sans-serif;
-  color: white;
+  // color: white;
 }
 
 .flex-center {
@@ -28,4 +29,7 @@
 body {
   background-color: var(--my_black);
   margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }

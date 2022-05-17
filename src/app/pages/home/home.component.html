@@ -1,11 +1,63 @@
-<div class="flex-center container">
-  <!-- title -->
-  <div class="title">Who won that GAME</div>
-  <div class="flex-center">
-    <div class="button" (click)="onPlayClick()">Play</div>
+<div class="container">
+  <!--* background  -->
+  <div class="overlay"></div>
+  <img
+    class="bg"
+    src="../../../assets/Football-Stadium-background.jpg"
+    alt=""
+  />
+  <!--* title -->
+  <div class="title">WHO WON THAT GAME</div>
 
-    <div class="button" routerLink="/how">How to play</div>
-
-    <div class="button" routerLink="/about">About</div>
+  <!--* buttons -->
+  <div class="buttons-container">
+    <div class="play flex-center" (click)="onPlayClick()">
+      <div class="text">PLAY</div>
+    </div>
+    <div class="how flex-center" (click)="onHowClick()">
+      <div class="text">How to play</div>
+    </div>
+    <div class="api flex-center" (click)="onAboutClick()">
+      <div class="text">About</div>
+    </div>
+  </div>
+  <!--*info  -->
+  <div id="data" class="info-container" *ngIf="fixtures">
+    <div *ngFor="let fixture of infoFixtures">
+      <div class="fixture-container">
+        <div class="logo flex-center">
+          <img [src]="fixture.teams.home.logo" alt="home-logo" />
+        </div>
+        <div class="team-name">
+          {{ fixture.teams.home.name }}
+        </div>
+        <div class="score">
+          {{ fixture.score.home }}
+        </div>
+        <div class="fix-info">
+          <div class="season">
+            {{ fixture.season }}
+          </div>
+          <div class="round">
+            {{ fixture.league.round }}
+          </div>
+          <div class="league">
+            {{ fixture.league.name }}
+          </div>
+        </div>
+        <div class="score">
+          {{ fixture.score.away }}
+        </div>
+        <div class="team-name">
+          {{ fixture.teams.away.name }}
+        </div>
+        <div class="logo flex-center">
+          <img [src]="fixture.teams.away.logo" alt="away-logo" />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- <button (click)="saveFunction()">SAVE</button> -->
+<!-- <button (click)="clearFunction()">clear</button> -->

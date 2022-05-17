@@ -2,12 +2,21 @@
   <div class="title">CHOOSE GAME MODE</div>
   <hr />
   <div class="cards-container">
-    <div class="card" (click)="dialogRef.close('Champions-League')">
+    <div class="card cl" (click)="dialogRef.close('Champions-League')">
       <div class="overlay"></div>
       <div class="card-text">
         <div class="card-title">UEFA Champions League</div>
         <div class="card-description">
           Quizz about champions league fixtures from 2012 to 2020
+        </div>
+      </div>
+    </div>
+    <div class="card wc" (click)="dialogRef.close('World-Cup')">
+      <div class="overlay"></div>
+      <div class="card-text">
+        <div class="card-title">World Cup</div>
+        <div class="card-description">
+          Quizz about fixtures from the 2010, 2014 and 2018 world cup finals
         </div>
       </div>
     </div>

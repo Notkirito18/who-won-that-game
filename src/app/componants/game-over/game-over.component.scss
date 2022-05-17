@@ -1,0 +1,47 @@
+
+*{
+  color: var(--my_black);
+}
+.title{
+  font-size: 28pt;
+  font-weight: bold;
+  padding: 20px 0px;
+}
+.text{
+    font-size: 22pt;
+    padding: 20px 0px;
+}
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 0px;
+  .new{
+    background-color: var(--my_green);
+  }
+  .mode {
+    background-color: var(--my_blue);
+  }
+  .home {
+    background-color: var(--my_gray);
+  }
+
+}
+
+// ::ng-deep .mat-button-wrapper{
+//   color:var(--my_black) !important;
+// }
+
+@media only screen and (max-width: 600px) {
+  .title{
+    font-size: 20pt;
+  }
+  .text{
+    font-size: 16pt;
+    padding: 10px 0px;
+  }
+  .buttons{
+    flex-direction: column;
+    gap: 15px;
+  }
+}

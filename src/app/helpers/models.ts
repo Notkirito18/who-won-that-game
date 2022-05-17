@@ -35,6 +35,10 @@ export class Team {
     public logo: string
   ) {}
 }
+
+export class leagueId {
+  constructor(public id: number, public league: string) {}
+}
 // {
 //   "get": "fixtures",
 //   "parameters": {
